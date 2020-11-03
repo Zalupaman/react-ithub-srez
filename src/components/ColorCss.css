@@ -1,0 +1,15 @@
+.colorOuter{
+    width: 22%;
+    height: fit-content;
+    background: #fff;
+    box-shadow: 0 0 5px 0 #fff;
+    margin: 10px;
+
+}
+.colorBlock{
+    width: 100%;
+    height: 80px;
+}
+.colorName{
+    padding: 5px;
+}

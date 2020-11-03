@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Color from './components/Color.js'
+
+// с неймингом не заморачивался 
 
 function App() {
+  const [Bgcolors, setColor] = useState([])
+  useEffect(()=>{
+    function componentToHex(c) {
+      let hex = c.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    }
+    
+    function rgbToHex(r, g, b) {
+      return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+    let colors = []
+    for (let index = 0; index <= 11; index++) {
+      
+      let r = Math.floor(Math.random() * (255 - 0)) + 0
+      let g = Math.floor(Math.random() * (255 - 0)) + 0
+      let b = Math.floor(Math.random() * (255 - 0)) + 0
+      let colorHEX = rgbToHex(r,g,b)
+      colors.push(colorHEX)
+     
+    }
+    setColor(colors)
+    console.log(colors)
+  },[]) // уберите пустой массив и будет дискотека <3
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {Bgcolors.map( (color) => (
+        <Color color={color} />
+      ))}
+      
     </div>
   );
 }
